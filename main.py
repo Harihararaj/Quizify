@@ -1,4 +1,3 @@
-
 import streamlit as st
 import os
 import sys
@@ -142,6 +141,8 @@ if __name__ == "__main__":
                     st.markdown(f'**Explanation:** {index_question["explanation"]}')
                 elif "answered_correct" in st.session_state.question_bank[question_index] and st.session_state.question_bank[question_index]["answered_correct"] == False:
                     st.error("Incorrect!")
+                    st.write(f"**Correct Answer :** {index_question['answer']}")
+                    st.markdown(f'**Explanation:** {index_question["explanation"]}')
 
             with st.container():
                 col1, col2, col3 = st.columns([2, 6.75, 1.25])
