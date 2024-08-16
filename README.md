@@ -1,4 +1,4 @@
-# 🎈Quizzify
+# 🎈Quizify
 
 A Streamlit application for generating Quiz from the uploaded documents.
 
