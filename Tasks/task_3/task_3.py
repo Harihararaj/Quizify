@@ -17,7 +17,8 @@ class DocumentProcessor:
         uploaded_files = st.file_uploader(
             "Choose a pdf file", 
             accept_multiple_files=True,
-            type = ['pdf']
+            type = ['pdf'],
+            key='pdfs'
         )
 
         if uploaded_files is not None:
@@ -43,7 +44,3 @@ class DocumentProcessor:
             
             # Display the total number of pages processed.
             st.write(f"Total pages processed: {len(self.pages)}")
-
-
-processor = DocumentProcessor()
-processor.ingest_documents()

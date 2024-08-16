@@ -58,29 +58,3 @@ class ChromaCollectionCreator:
     
     def get_retriever(self):
         return self.db.as_retriever()
-
-if __name__ == "__main__":
-    processor = DocumentProcessor() # Initialize from Task 3
-    processor.ingest_documents()
-    
-    embed_config = {
-        "model_name": "textembedding-gecko@003",
-        "project": "sample-mission-quizify-432319",
-        "location": "us-central1"
-    }
-    
-    embed_client = EmbeddingClient(**embed_config) # Initialize from Task 4
-    
-    chroma_creator = ChromaCollectionCreator(processor, embed_client)
-    
-    with st.form("Load Data to Chroma"):
-        st.write("Select PDFs for Ingestion, then click Submit")
-
-        submitted = st.form_submit_button("Submit")
-        question=st.text_input(label="")
-        if submitted:
-            chroma_creator.create_chroma_collection()
-            similar_query = chroma_creator.query_chroma_collection(question)
-            st.write(similar_query)
-            retriever = chroma_creator.get_vectorstore()
-            print(type(retriever))
